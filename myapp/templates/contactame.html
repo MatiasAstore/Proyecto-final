@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Contactame</title>
+  </head>
+
+  <body class="font-family-base">
+    <!-- Navegacion -->
+    <div class="container-fluid">
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-white mb-3 p-4 border"
+        style="margin-right: -15px; margin-left: -15px"
+      >
+        <a class="navbar-brand mx-auto ms-4" href="{% url 'index' %}">
+          <img
+            src="{% static 'img/portafolio.png' %}"
+            alt="Logo"
+            style="height: 40px; width: 40px"
+          />
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-4">
+              <a class="navbar-brand mx-auto ms-4" href="{% url 'index' %}">
+                <img
+                  src="{% static 'img/cancelar.png' %}"
+                  alt="Logo"
+                  style="height: 20px; width: 20px"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Imagen en el centro del borde bottom -->
+      <div class="text-center">
+        <img
+          src="{% static 'img/myAvatar.png' %}"
+          class="img-fluid rounded-circle"
+          alt="Mi Imagen"
+          style="width: 100px; height: 100px; position: relative; top: -70px"
+        />
+      </div>
+    </div>
+
+    <!-- formulario -->
+    <div class="container mt-5">
+  <h1 class="mb-4 text-center">¿En que puedo ayudarte?</h1>
+  <form method="post" action="{% url 'contacto' %}">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      {{ form.nombre.label_tag }}
+      {{ form.nombre }}
+    </div>
+    
+    <div class="mb-3">
+      {{ form.correo.label_tag }}
+      {{ form.correo }}
+    </div>
+    
+    <div class="mb-3">
+      {{ form.mensaje.label_tag }}
+      {{ form.mensaje }}
+    </div>
+    
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary w-30 border-0" style= "background-color: #8800a0">Enviar mensaje</button>
+    </div>
+  </form>
+</div>
+    </div>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+{% extends "layouts/base.html" %} 
+
+{% load static %} 
+
+
+{% block content %}
+<!-- Traigo mi nombre y apellido del modelo y coloco una imagen  -->
+<div class="card text-center border-0 mb-4">
+  <div class="card-header bg-white text-dark border-0">
+    <h1 class="display-4 font-weight-bold">
+      {{ personas.0.nombre }} {{ personas.0.apellido }}
+    </h1>
+  </div>
+  <div class="card-body">
+    <img
+      src="{% static 'img/myAvatar.png' %}"
+      class="img-fluid rounded-circle"
+      alt="Mi Imagen"
+      style="width: 200px; height: 200px"
+    />
+  </div>
+</div>
+
+<!-- Sobre mi  (fondo violeta) -->
+<div
+  class="card text-white text-center"
+  style="
+    max-width: 100%;
+    margin: auto;
+    background: linear-gradient(to bottom, #8b25be, #4105e1);
+    padding: 120px;
+    height: auto;
+  "
+>
+  <div class="card-body">
+    <h2 class="card-title">Hola, soy Matias. Un gusto conocerte</h2>
+    <p class="card-text" style="max-width: 600px; margin: auto">
+      {{ personas.0.descripcion }}
+    </p>
+  </div>
+</div>
+
+<!-- Experiencia laboral -->
+
+<div
+  class="container"
+  style="margin-top: -110px; position: relative; z-index: 1"
+>
+  <h1 class="font-weight-bold text-center text-white">
+    Mi experiencia laboral
+  </h1>
+  <div class="row">
+    {% for ex in experiencia %}
+    <div class="col-md-4 mb-4">
+      <div
+        class="card text-center"
+        style="
+          border-radius: 15px;
+          background-color: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title">{{ ex.empresa }}</h5>
+          <div class="row mb-2">
+            <div class="col">
+              <h6 class="card-subtitle text-muted">
+                Fecha inicio: {{ ex.fecha_inicio }}
+              </h6>
+            </div>
+            <div class="col">
+              <h6 class="card-subtitle text-muted">
+                Fecha fin: {{ ex.fecha_fin }}
+              </h6>
+            </div>
+          </div>
+          <p class="card-text" style="max-width: 250px; margin: auto">
+            {{ ex.descripcion }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Educacion -->
+
+<div class="container" style="margin-top: 40px">
+  <h1 class="font-weight-bold text-center text-dark">Educación</h1>
+  <div class="row">
+    {% for edu in educacion %}
+    <div class="col-md-4 mb-4">
+      <div
+        class="card text-center"
+        style="
+          border-radius: 15px;
+          background-color: #f3f3f3;
+          border: 1px solid #d1d1d1;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title">{{ edu.establecimiento }}</h5>
+          <div class="row mb-2">
+            <div class="col">
+              <h6 class="card-subtitle text-muted">
+                Fecha de inicio: {{ edu.fecha_inicio }}
+              </h6>
+            </div>
+            <div class="col">
+              {% if edu.fecha_fin %}
+              <h6 class="card-subtitle text-muted">
+                Fecha de graduación: {{ edu.fecha_fin }}
+              </h6>
+              {% else %}
+              <h6 class="card-subtitle text-muted">En curso</h6>
+              {% endif %}
+            </div>
+          </div>
+          <p class="card-text" style="max-width: 250px; margin: auto">
+            {{ edu.titulo }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Educacion complementaria -->
+
+<div class="container mt-5">
+  <h1 class="font-weight-bold text-center text-dark mb-4">
+    Educación Complementaria
+  </h1>
+  <div class="row">
+    {% for edu in educacioncomplementaria %}
+    <div class="col-md-4 mb-4">
+      <div
+        class="card text-center"
+        style="
+          border-radius: 20px;
+          background-color: #8d8d8d;
+          border: 1px solid #d1d1d1;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <div class="card-body">
+          <h5 class="card-title">{{ edu.establecimiento }}</h5>
+          <div class="row mb-2">
+            <div class="col">
+              <h6 class="card-subtitle text-muted">
+                Fecha de inicio: {{ edu.fecha_inicio }}
+              </h6>
+            </div>
+            <div class="col">
+              {% if edu.fecha_fin %}
+              <h6 class="card-subtitle text-muted">
+                Fecha de finalizacion: {{ edu.fecha_fin }}
+              </h6>
+              {% else %}
+              <h6 class="card-subtitle text-muted">En curso</h6>
+              {% endif %}
+            </div>
+          </div>
+          <p class="card-text" style="max-width: 250px; margin: auto">
+            {{ edu.titulo }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Proyectos -->
+
+<div class="card text-white text-center" style="max-width: 100%; margin: auto; background: linear-gradient(to bottom, #8b25be, #4105e1); padding: 80px; height: auto0; box-shadow: 0px 5px 5px -5px #888;">
+  <h1 class="font-weight-bold text-center text-white mb-4">Mis Proyectos</h1>
+  <div class="row">
+    {% for proyecto in proyectos %}
+      <div class="col-md-4 mb-4">
+        <div class="card text-center" style="border-radius: 15px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 1);">
+          <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="{{ proyecto.nombre }}" style="border-radius: 15px 15px 0 0; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ proyecto.nombre }}</h5>
+            <p class="card-text">{{ proyecto.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
