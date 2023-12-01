@@ -1,9 +1,4 @@
-{% extends "layouts/base.html" %} 
-
-{% load static %} 
-
-
-{% block content %}
+{% extends "layouts/base.html" %} {% load static %} {% block content %}
 <!-- Traigo mi nombre y apellido del modelo y coloco una imagen  -->
 <div class="card text-center border-0 mb-4">
   <div class="card-header bg-white text-dark border-0">
@@ -176,22 +171,43 @@
 
 <!-- Proyectos -->
 
-<div class="card text-white text-center" style="max-width: 100%; margin: auto; background: linear-gradient(to bottom, #8b25be, #4105e1); padding: 80px; height: auto0; box-shadow: 0px 5px 5px -5px #888;">
+<div
+  class="card text-white text-center"
+  style="
+    max-width: 100%;
+    margin: auto;
+    background: linear-gradient(to bottom, #8b25be, #4105e1);
+    padding: 80px;
+    height: auto0;
+    box-shadow: 0px 5px 5px -5px #888;
+  "
+>
   <h1 class="font-weight-bold text-center text-white mb-4">Mis Proyectos</h1>
   <div class="row">
     {% for proyecto in proyectos %}
-      <div class="col-md-4 mb-4">
-        <div class="card text-center" style="border-radius: 15px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 1);">
-          <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="{{ proyecto.nombre }}" style="border-radius: 15px 15px 0 0; height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">{{ proyecto.nombre }}</h5>
-            <p class="card-text">{{ proyecto.descripcion }}</p>
-          </div>
+    <div class="col-md-4 mb-4">
+      <div
+        class="card text-center"
+        style="
+          border-radius: 15px;
+          background-color: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+        "
+      >
+        <img
+          src="{{ proyecto.imagen.url }}"
+          class="card-img-top"
+          alt="{{ proyecto.nombre }}"
+          style="border-radius: 15px 15px 0 0; height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ proyecto.nombre }}</h5>
+          <p class="card-text">{{ proyecto.descripcion }}</p>
         </div>
       </div>
+    </div>
     {% endfor %}
   </div>
 </div>
-
 
 {% endblock %}
